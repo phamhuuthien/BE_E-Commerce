@@ -6,6 +6,8 @@ const blogRouters = require('./blog')
 const brandRouters = require('./brand')
 const couponRouters = require('./coupon')
 const orderRouters = require('./order')
+const chatRouters = require('./chat')
+
 
 
 
@@ -21,6 +23,8 @@ const initRouters = (app)=>{
     app.use('/api/brand',brandRouters)
     app.use('/api/coupon',couponRouters)
     app.use('/api/order',orderRouters)
+    app.use('/api/chat',chatRouters)
+
 
 
 

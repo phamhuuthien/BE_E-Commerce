@@ -241,6 +241,21 @@ const updateCart =asyncHanler( async(req,res)=>{
 }) 
 
 
+const Blocked = asyncHanler(async(req,res) =>{
+    const {_id} = req.params
+    const user = await User.findById(_id)
+    let response 
+    if(user.isBlocked){
+        response =  await User.findByIdAndUpdate(_id,{ $set: { isBlocked: false } }, {new : true})
+    }else{
+        response =  await User.findByIdAndUpdate(_id,{ $set: { isBlocked: true } }, {new : true})
+    }
+    return res.status(200).json({
+        success : response ? true : false,
+        rs : response ? response : "something went wrong"
+    })
+}) 
+
 module.exports = {
     register,
     login,
@@ -255,7 +270,8 @@ module.exports = {
     updateUserByAdmin,
     deleteUser,
     updateUserAddress,
-    updateCart
+    updateCart,
+    Blocked
 }
 
 

@@ -20,6 +20,8 @@ router.post('/resetPassword',ctrls.resetPassword)
 
 
 router.get('/getAllUsers',verifyToken,isAdmin,ctrls.getUsers)
+router.put('/blocked/:_id',verifyToken,isAdmin,ctrls.Blocked)
+
 
 router.put('/updateUser',verifyToken,ctrls.updateUser)
 
